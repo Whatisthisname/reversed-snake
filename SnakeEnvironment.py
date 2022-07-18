@@ -67,6 +67,7 @@ class SnakeEnvironment:
 
         # check if snake is out of bounds
         if self.pos[0] < 0 or self.pos[0] >= self.gridsize[0] or self.pos[1] < 0 or self.pos[1] >= self.gridsize[1]:
+            # self.pos = np.array([10,10])
             print("snake is out of bounds")
             return self.get_state(), -1, True
 
@@ -93,9 +94,10 @@ class SnakeEnvironment:
         for i, pos in enumerate(self.body):
             pygame.draw.rect(screen, (100, 200 + ((i%2) - 0.5 * 2) * 55, 100), (pos[0]*w, pos[1]*h, w, h))
 
-        # draw head
-        pygame.draw.rect(screen, (200, 255, 200), (self.body[0][0]*w + 0.25*w, self.body[0][1]*h + 0.25*h, w*0.5, h*0.5))
+        # draw eye
+        pygame.draw.circle(screen, (200, 255, 200), (self.body[0][0]*w + 0.5*w, self.body[0][1]*h + 0.5*h), h*0.7/2)
 
         # draw food
-        pygame.draw.rect(screen, (255, 0, 0), (self.food[0]*w, self.food[1]*h, w, h))
+        pygame.draw.circle(screen, (255, 0, 0), (self.food[0]*w + w/2, self.food[1]*h + h/2), w/2)
+        pygame.draw.rect(screen, (100, 0, 0), ((self.food[0]+0.3)*w, (self.food[1]-0.2)*h, w*0.3, h*0.3))
         pygame.display.update()

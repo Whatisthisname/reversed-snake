@@ -17,7 +17,7 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((400, 400))
     screen.fill((100, 100, 120))
-    pygame.display.set_caption('Snake')
+    pygame.display.set_caption('Reverse Snake')
 
 
     font = pygame.font.SysFont(pygame.font.get_default_font(), 40)
